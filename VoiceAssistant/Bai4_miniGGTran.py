@@ -92,7 +92,7 @@ def read_aloud(text):
         while pygame.mixer.music.get_busy():
             pygame.time.Clock().tick(10)
         
-        # Đợi một chút để đảm bảo file đã phát xong
+     
         pygame.mixer.music.stop()  # Dừng phát nhạc trước khi xóa
         pygame.mixer.music.unload()  # Giải phóng bộ nhớ
         os.remove(filename)  # Xóa file sau khi phát

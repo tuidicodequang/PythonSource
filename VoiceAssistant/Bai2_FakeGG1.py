@@ -102,11 +102,10 @@ def speak_text(text, lang_out, voice=None):
         while pygame.mixer.music.get_busy():
             pygame.time.Clock().tick(10)
         
-        # Chờ thêm một chút để đảm bảo âm thanh kết thúc hoàn toàn
-        pygame.time.delay(5000)
-        
-        # Sau đó mới xóa file
-        os.remove(filename)
+        pygame.time.delay(500)
+        pygame.mixer.music.stop()  # Dừng phát nhạc trước khi xóa
+        pygame.mixer.music.unload()  # Giải phóng bộ nhớ
+        os.remove(filename)  # Xóa file sau khi phát
     except Exception as e:
         print(f"Lỗi khi phát tệp âm thanh: {e}")
 
