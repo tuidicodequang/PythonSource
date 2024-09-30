@@ -77,9 +77,9 @@ def voice_to_text(src_lang, tgt_lang):
     
     return translated_text
 
-def read_aloud(text):
+def read_aloud(text, lang):
     try:
-        ta = gTTS(text=text, lang='vi')
+        ta = gTTS(text=text, lang=lang)
         filename = 'dich.mp3'
         ta.save(filename)
         
@@ -137,10 +137,10 @@ def run_translation():
             if option == '1':
                 break  # Quay lại dịch mới
             elif option == '2':
-                if current_text:
-                    read_aloud(current_text)
-                else:
-                    print("Không có văn bản để đọc.")
+              if current_text:
+                read_aloud(current_text, tgt_lang)  # Truyền tgt_lang vào đây
+              else:
+                print("Không có văn bản để đọc.")
             elif option == '3':
                 src_lang, tgt_lang = choose_language()
                 break  # Chọn lại ngôn ngữ
